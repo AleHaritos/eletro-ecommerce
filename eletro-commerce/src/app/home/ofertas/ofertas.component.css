@@ -1,0 +1,127 @@
+.container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 30px;
+}
+
+.ofertasContainer {
+    width: 70%;
+    height: 45vh;
+    /* border: 1px black solid; */
+    display: flex;
+
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+/* CARD */
+
+.card {
+    height: 35vh;
+    width: 12vw;
+    cursor: pointer;
+    margin-right: 20px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.card:hover {
+    height: 45vh;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card:hover .values {
+   padding-top: 0px;
+} 
+
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardContent {
+    border-top: 0.3px #ccc solid;
+}
+
+.image {
+    height: 20vh;
+    max-width: 8.5vw;
+}
+
+.valor {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.valorOriginal {
+    font-size: 0.9rem;
+    color: rgb(131, 128, 128);
+    text-decoration: line-through;
+    visibility: none;
+}
+
+.off {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(20, 143, 16);
+}
+
+.values {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btnDetalhes {
+    width: 10vw;
+    height: 33px;
+}
+
+.descricao {
+    font-size: 0.9rem;
+    color: rgb(131, 128, 128);
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* Arrows */
+
+.arrow {
+    color: #3f51b5;
+    background-color: #FFF;
+    position: relative;
+    top: 30%;
+    z-index: 999;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.arrow:hover {
+    background-color: #3f51b5;
+    color: #FFF;
+}
+
+
+@media(min-width: 0px) and (max-width: 1100px) {
+    .card {
+        width: 200px;
+    }
+
+    .image {
+        max-width: 150px;
+    }
+
+    .btnDetalhes {
+        width: 150px;
+    }
+    
+}

@@ -1,0 +1,59 @@
+.card {
+    min-width: 400px;
+    min-height: 500px;
+    margin-top: 30px;
+    margin-bottom: 35vh;
+    padding: 20px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    margin: 10px;
+}
+
+.subtitle {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #333;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+label:hover {
+    background-color: rgb(109, 107, 107);
+    color: rgb(22, 21, 21);
+    font-weight: bold;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+button {
+    padding: 5px 20px;
+}

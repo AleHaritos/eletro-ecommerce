@@ -1,0 +1,62 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    /* display: flex; */
+    width: 70%;
+    height: 80vh;
+}
+
+.title {
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.bigField {
+    width: 30%;
+}
+
+.smallField {
+    width: 10%;
+}
+
+.divisor {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.toggle {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnContainer {
+    display: flex;
+}
+
+.sucess {
+    background-color: rgb(30, 161, 30);
+    color: #FFF;
+}
+
+button {
+    width: 100px;
+}

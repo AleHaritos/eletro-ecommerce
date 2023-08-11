@@ -1,0 +1,71 @@
+<div style="display: flex; align-items: center; flex-direction: column;">
+    <mat-card class="card">
+        <mat-card-title>
+            <h2 style="text-align: center;">Cadastro de Item</h2>
+        </mat-card-title>
+        <form [formGroup]="formsCadastro" class="form" (ngSubmit)="cadastrar()">
+            <mat-form-field appearance="fill" class="formFieldBig">
+                <mat-label>Nome do Produto:</mat-label>
+                <input type="text" matInput formControlName="nome" placeholder="Nome..." />
+                <mat-error *ngIf="this.formsCadastro.get('nome')?.hasError('required')">
+                    Este Campo é <strong>obrigatório</strong>
+                </mat-error>
+                <mat-error *ngIf="this.formsCadastro.get('nome')?.hasError('maxlength')"> Números de caractéres
+                    excessivos</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="formFieldBig">
+                <mat-label>Descrição do Produto:</mat-label>
+                <input type="text" matInput formControlName="descricao" placeholder="Descricão..." />
+                <mat-error *ngIf="this.formsCadastro.get('descricao')?.hasError('required')">
+                    Este Campo é <strong>obrigatório</strong>
+                </mat-error>
+                <mat-error *ngIf="this.formsCadastro.get('descricao')?.hasError('maxlength')"> Números de caractéres
+                    excessivos </mat-error>
+            </mat-form-field>
+            <div style="width: 100%;">
+                <mat-form-field appearance="fill" class="formFieldSmall" style="margin-right: 10%;">
+                    <mat-label>Valor do Produto:</mat-label>
+                    <input type="number" step="0.01" matInput formControlName="valor" placeholder="Ex: 79.99" />
+                    <mat-error *ngIf="this.formsCadastro.get('valor')?.hasError('required')">
+                        Este Campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="formFieldSmall">
+                    <mat-label>Estoque:</mat-label>
+                    <input type="number" matInput formControlName="estoque" placeholder="Estoque..." />
+                    <mat-error *ngIf="this.formsCadastro.get('off')?.hasError('required')"> Este Campo é
+                        <strong>obrigatório</strong> </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill" class="formFieldSmall" *ngIf="formsCadastro.value.promocao">
+                <mat-label>Porcentagem OFF:</mat-label>
+                <input type="text" matInput formControlName="off" placeholder="50" maxlength="2" />
+                <mat-icon matSuffix>percent</mat-icon>
+                <mat-error *ngIf="this.formsCadastro.get('off')?.hasError('maxlength')"> Números de caractéres
+                    excessivos </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="formFieldSmall" *ngIf="formsCadastro.value.promocao">
+                <mat-label>Valor na promoção:</mat-label>
+                <input type="number" step="0.01" matInput formControlName="valorPromocao" />
+            </mat-form-field>
+
+
+            <div class="toggle">
+                <mat-label>Promoção</mat-label>
+                <mat-slide-toggle formControlName="promocao"></mat-slide-toggle>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Categorias</mat-label>
+                <mat-select formControlName="categoria">
+                    <mat-option *ngFor="let c of categorias" [value]="c.value">
+                        {{c.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button type="submit" class="btn">Cadastrar</button>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,68 @@
+/* Template */
+.header {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+/* Logo */
+.logo {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+/* Search  */
+.searchInput {
+    /* width: 90%; */
+    font-size: 0.9rem;
+}
+
+.searchField {
+    width: 80%;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+.formSearch {
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 0px;
+}
+
+.iconSearch {
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Linha dois */
+
+.row2 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.link {
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.linkBox {
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.menu-item {
+    text-decoration: none;
+}

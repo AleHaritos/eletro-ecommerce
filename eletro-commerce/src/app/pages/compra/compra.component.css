@@ -1,0 +1,181 @@
+/* Estrutura */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 70%;
+    height: 80vh;
+}
+
+/* Imagem Principal */
+.imagem {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border-right: 1px solid rgba(65, 64, 64, 0.712); */
+    box-shadow: 2px 0px 2px -1px rgba(0, 0, 0, 0.28);
+}
+
+.imagemPrincipal {
+    width: 400px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.imagemPrincipal:hover {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+}
+
+.arrow {
+    color: #3f51b5;
+    background-color: #FFF;
+    position: relative;
+    top: 30%;
+    z-index: 999;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.arrow:hover {
+    background-color: #3f51b5;
+    color: #FFF;
+}
+
+.gridImagens {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Grid imagens */
+
+.grid {
+    width: 80px;
+    height: 60px;
+    border-radius: 10%;
+    border: 2px black solid;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.imgIcon {
+    width: 55px;
+}
+
+.active {
+    border: #3f51b5 4px solid;
+}
+
+/* Dados */
+.dadosContainer {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.6rem;
+    margin-top: 11%;
+    text-align: center;
+    font-weight: 500;
+    /* text-align: center; */
+}
+
+.semDesconto {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.desconto {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 40px;
+    margin-left: 40px;
+    color: red;
+    text-decoration: line-through;
+}
+
+.precoComDesconto {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.off {
+    margin-left: 12px;
+    margin-top: 10px;
+    color: rgb(30, 161, 30);
+}
+
+.titleDescricao {
+    margin-top: 60px;
+    margin-left: 40px;
+    font-weight: 400;
+}
+
+.descricao {
+    margin-top: 5px;
+    margin-left: 40px;
+    font-weight: 300;
+}
+
+.freteContainer {
+    margin-left: 40px;
+    margin-top: 40px;
+    display: flex;
+}
+
+.freteInput {
+    width: 40%;
+    font-size: 0.9rem; 
+    font-weight: 500;
+   
+}
+
+/* :Host garante q a mudanca do :ng-deep vai ser só no componente */
+/* ng-deep garante mudanca profunda em estilos pré definidos pelo componente */
+
+:host ::ng-deep.mat-mdc-form-field-hint-wrapper {
+    top: -10px;
+}
+/* Ajuste tamanho do height do input*/
+:host ::ng-deep .mdc-notched-outline {
+    height: 40px !important
+}
+:host ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    padding-bottom: 20px;
+}
+:host ::ng-deep .mat-mdc-input-element {
+    position: relative;
+    bottom: 7px;
+}
+
+.buttonFrete {
+    height: 35px;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+.btnAdd {
+    width: 40%;
+    align-self: start;
+    margin-top: 50px;
+    margin-left: 40px;
+}

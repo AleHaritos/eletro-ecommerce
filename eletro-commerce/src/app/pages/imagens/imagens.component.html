@@ -1,0 +1,29 @@
+<mat-spinner *ngIf="produto === undefined"></mat-spinner>
+
+<mat-card class="card" *ngIf="produto">
+    <mat-card-header>
+    <mat-card-title class="title">Upload das imagens do produto</mat-card-title>
+    <mat-card-subtitle class="subtitle">{{ produto.nome }}</mat-card-subtitle>
+    </mat-card-header>
+
+<mat-card-content class="content">
+    <form>
+    <label for="imagem1" class="label">Imagem 1:</label>
+    <input type="file" name="imagem1" id="imagem1" accept="image/*" (change)="imagem1($event)" >
+
+    <label for="imagem2" class="label">Imagem 2:</label>
+    <input type="file" name="imagem1" id="imagem2" accept="image/*" (change)="imagem($event)" >   
+
+
+    <label for="imagem3" class="label">Imagem 3:</label>
+    <input type="file" name="imagem1" id="imagem3" accept="image/*" (change)="imagem($event)" >
+
+    <label for="imagem4" class="label">Imagem 4:</label>
+    <input type="file" name="imagem1" id="imagem4" accept="image/*" (change)="imagem($event)" >
+</form>
+
+<div class="btn">
+    <button mat-raised-button color="primary" (click)="salvar()">Concluir</button>
+</div>
+</mat-card-content>
+</mat-card>

@@ -1,0 +1,60 @@
+<mat-toolbar class="header" color="primary">
+    <mat-toolbar-row class="row">
+    <span class="logo" routerLink="/">LOGO</span>
+     <form [formGroup]="formSearch" (ngSubmit)="onSubmitSearch()" class="formSearch">
+        <mat-form-field class="searchField" appearance="fill">
+            <input matInput formControlName="search" class="searchInput" placeholder="Buscar produtos..."  maxlength="120"/>
+             <button mat-icon-button matSuffix type="submit"> 
+            <mat-icon class="iconSearch">search</mat-icon>
+            </button> 
+            
+        </mat-form-field>
+     </form>   
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="row2">
+        <div class="categorias"  [matMenuTriggerFor]="categorias">
+            <p class="link">Categorias</p>
+        </div>
+        <div>
+        <div class="linkBox" *ngIf="admin == undefined">
+            <p class="link" routerLink="/auth/cadastro">Crie a sua conta</p>
+            <p class="link" routerLink="/auth/login">Entrar</p>
+            <button mat-icon-button class="iconBtn" style="margin-left: 10px; padding-bottom: 10px;" routerLink="/carrinho">
+                <mat-icon class="icon">shopping_cart</mat-icon>
+            </button>
+        </div>
+        <button mat-icon-button class="iconBtn" *ngIf="admin" [matMenuTriggerFor]="menu">
+            <mat-icon class="icon">admin_panel_settings</mat-icon>
+        </button>
+
+        <button mat-icon-button class="iconBtn" *ngIf="admin === false" [matMenuTriggerFor]="menu1">
+            <mat-icon class="icon">person</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <a routerLink="/cadastro" class="menu-item"><button mat-menu-item>Cadastro</button></a>
+            <a routerLink="/controle" class="menu-item"><button mat-menu-item>Controle</button></a>
+            <!--<a routerLink="/pedidos-historico"><button mat-menu-item>Registro de pedidos</button></a> -->
+            <a (click)="signOut()"><button mat-menu-item>Sair</button></a>
+          </mat-menu>
+          
+          <mat-menu #menu1="matMenu">
+            <a (click)="signOut()"><button mat-menu-item>Sair</button></a>
+          </mat-menu>
+
+         <mat-menu #categorias="matMenu">
+            <a *ngFor="let c of util.categorias" routerLink="/categoria/{{ c.link }}" class="menu-item"><button mat-menu-item>{{ c.nome }}</button></a>
+         </mat-menu>  
+          
+        <button *ngIf="admin != undefined" mat-icon-button class="iconBtn" style="margin-left: 10px;" routerLink="/carrinho">
+            <mat-icon class="icon">shopping_cart</mat-icon>
+        </button>
+
+        </div>
+          
+    </mat-toolbar-row>
+
+</mat-toolbar>
+<br>
+<router-outlet></router-outlet>

@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+.forms {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    width: 40%;
+}
+
+.bigField {
+    width: 65%;
+}
+
+.smallField {
+    width: 15%;
+}
+
+.divisionInput {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    width: 30%;
+    align-self: center;
+    margin-top: 100px;
+}

@@ -1,0 +1,61 @@
+<!-- Carrinho vazio -->
+<div class="vazio" *ngIf="carrinho.length === 0">
+
+    <h1 class="titleVazio">O Carrinho está vazio!</h1>
+
+    <mat-icon class="icon" routerLink="/">shopping_cart</mat-icon>
+
+    <button mat-stroked-button class="btnBack" routerLink="/">Voltar as compras</button>
+</div>
+
+<!-- Carrinho ocupado -->
+<div *ngIf="carrinho.length > 0" class="carrinhoContainer">
+    <h1 class="title">Carrinho de Compras</h1>
+    <mat-card *ngFor="let item of carrinho">
+        <mat-grid-list cols="10" rowHeight="100px">
+            <mat-grid-tile colspan="2">
+                <img class="imgProduto" [src]="item.imagem" alt="imagem do produto">
+            </mat-grid-tile>
+
+        <mat-grid-tile colspan="3" class="info">
+              <h3 class="titleCarrinho">{{ item.nome }}</h3>
+            <mat-card-subtitle class="subtitle">{{ item.descricao }}</mat-card-subtitle>
+            <mat-card-subtitle class="subtitle3">{{ item.preco | currency: 'BRL'}}</mat-card-subtitle>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4">
+            <h3 class="quantidade">Quantidade</h3>
+
+            <div class="quantidadebtns">
+                
+                <button mat-icon-button (click)="diminuir(item)" class="remove">
+                    <mat-icon>remove</mat-icon>
+                  </button> 
+
+                  <h4 class="titleQtd">{{ item.quantidade }}</h4>
+
+                  <button mat-icon-button (click)="adicionar(item)" class="add">
+                    <mat-icon>add</mat-icon>
+                  </button> 
+            </div>
+
+            <h3 class="remover" (click)="removerItem(item)">Remover</h3>
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="1" *ngIf="item.preco">
+            <p class="valor">{{ item.preco * item.quantidade | currency : 'BRL' }}  </p>
+        </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>   
+    <div class="resumo">
+        <h1 class="title">Resumo de Compras</h1>
+        <mat-card class="resumoCard">
+            <p *ngFor="let c of carrinho" class="nomeResumo"> {{ formatNome(c) }} - {{ c.preco | currency : 'BRL' }}</p>
+            <mat-divider ></mat-divider>
+            <p class="total">Total: {{ valorTotal | currency : 'BRL' }}</p>
+        </mat-card>
+
+        <button mat-raised-button color="primary" class="finalizar" (click)="finalizar()"> Finalizar compra</button>
+    </div>      
+</div>
+

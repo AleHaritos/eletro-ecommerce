@@ -1,0 +1,48 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title class="title">Finalizar Pedido</mat-card-title>
+        <form [formGroup]="forms" class="forms">
+
+            <div class="divisionInput">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Cep:</mat-label>
+                    <input type="text" matInput formControlName="cep" maxlength="8" (keyup)="onChangeCep()" autofocus>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Valor Total:</mat-label>
+                    <input type="text" matInput formControlName="valorTotal" readonly="true">
+                </mat-form-field>
+            </div>
+
+            <div class="divisionInput">
+                <mat-form-field appearance="fill" class="bigField">
+                    <mat-label>Logradouro:</mat-label>
+                    <input type="text" matInput formControlName="logradouro" readonly="true" placeholder="Campo preenchido automaticamente ao digitar CEP">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="smallField">
+                    <mat-label>Número:</mat-label>
+                    <input type="text" matInput formControlName="numero">
+                </mat-form-field>
+            </div>
+
+            <div class="divisionInput">
+                <mat-form-field appearance="fill" style="width: 35%">
+                    <mat-label>Cidade:</mat-label>
+                    <input type="text" matInput formControlName="localidade" readonly="true" placeholder="Campo preenchido automaticamente ao digitar CEP">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="width: 20%;">
+                    <mat-label>Frete:</mat-label>
+                    <input type="text" matInput formControlName="frete" readonly="true" placeholder="Campo preenchido automaticamente ao digitar CEP">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="smallField">
+                    <mat-label>Prazo:</mat-label>
+                    <input type="text" matInput formControlName="prazo" readonly="true" >
+                </mat-form-field>
+            </div>   
+                <button mat-raised-button color="primary" class="btn">Confirmar pedido</button>
+        </form>
+    </mat-card>
+</div>

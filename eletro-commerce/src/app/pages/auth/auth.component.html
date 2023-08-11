@@ -1,0 +1,70 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-header class="header">
+            <p class="title">{{ type ? 'Login' : 'Cadastro'}}</p>
+        </mat-card-header>
+        <mat-card-content class="content">
+            <form [formGroup]="formsLogin" class="form" *ngIf="type" (ngSubmit)="submit()">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Email:</mat-label>
+                    <input type="email" matInput formControlName="email">
+                    <mat-error *ngIf="this.formsLogin.get('email')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                    <mat-error *ngIf="this.formsLogin.get('email')?.hasError('email')">Email inválido</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Senha:</mat-label>
+                    <input [type]=typeInput matInput formControlName="senha">
+                    <button matSuffix mat-icon-button (click)="toggleInputPassword()">
+                        <mat-icon>{{ togglePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                      </button>
+                    <mat-error *ngIf="this.formsLogin.get('senha')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+            </form>    
+            
+            <form [formGroup]="formRegister" *ngIf="!type" class="form" (ngSubmit)="submit()">
+                <mat-form-field appearance="fill" class="field2">
+                    <mat-label>Nome:</mat-label>
+                    <input type="text" matInput formControlName="nome">
+                    <mat-error *ngIf="this.formsLogin.get('nome')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field2">
+                    <mat-label>Email:</mat-label>
+                    <input type="email" matInput formControlName="email">
+                    <mat-error *ngIf="this.formsLogin.get('email')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                    <mat-error *ngIf="this.formsLogin.get('email')?.hasError('email')">Email inválido</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field2">
+                    <mat-label>Telefone:</mat-label>
+                    <span matPrefix>+11 &nbsp;</span>
+                    <input type="tel" matInput formControlName="telefone" placeholder="97777-8888">
+                    <mat-error>Este número está inválido</mat-error>
+                    <mat-hint>97777-8888</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field2">
+                    <mat-label>Senha:</mat-label>
+                    <input [type]=typeInput matInput formControlName="senha">
+                    <button matSuffix mat-icon-button (click)="toggleInputPassword()">
+                        <mat-icon>{{ togglePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                      </button>
+                    <mat-error *ngIf="this.formsLogin.get('senha')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="field2">
+                    <mat-label>Repita a senha:</mat-label>
+                    <input [type]=typeInput matInput formControlName="senha2">
+                    <button matSuffix mat-icon-button (click)="toggleInputPassword()">
+                        <mat-icon>{{ togglePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                      </button>
+                    <mat-error *ngIf="this.formsLogin.get('senha2')?.hasError('required')">Este Campo é <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+            </form>
+           
+        </mat-card-content>
+
+        <mat-card-actions class="btnContainer">
+            <button mat-raised-button color="primary" type="submit" (click)="submit()" class="btn">{{ type ? 'Entrar' : 'Cadastrar'}}</button>
+        </mat-card-actions>
+        <p class="underTitle">{{ type ? 'Ainda não possui login?' : 'Já possui conta?' }}</p>
+        <button mat-raised-button class="btnCriar" [routerLink]="['/auth', type ? 'cadastro' : 'login']">{{ type ? 'Criar conta' : 'Fazer login'}}</button>
+    </mat-card>
+
+</div>

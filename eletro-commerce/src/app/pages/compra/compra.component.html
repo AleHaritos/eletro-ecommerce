@@ -1,0 +1,58 @@
+<div class="container">
+    <mat-card class="card" *ngIf="produto">
+        <mat-grid-list cols="4" rowHeight="20%">
+            <!-- Imagem Principal -->
+            <mat-grid-tile colspan="2" rowspan="4">
+            <div class="imagem" *ngIf="imagens.length > 0">
+                <button mat-fab class="arrow" (click)="voltar()">
+                    <mat-icon>chevron_left</mat-icon>
+                  </button>
+                <img [src]="imagens[idxImagem].url" alt="Produto" class="imagemPrincipal">
+
+                <button mat-fab class="arrow" (click)="avancar()">
+                    <mat-icon>chevron_right</mat-icon>
+                </button>
+            </div>
+            </mat-grid-tile>
+            <!-- Dados do produto -->
+
+            <mat-grid-tile colspan="2" rowspan="5">
+                <div class="dadosContainer">
+                    <p class="title">{{ produto.nome }}</p>
+                    <p [ngClass]="isOff">{{ produto.precoOriginal | currency : 'BRL'}}</p>
+                    <div style="display: flex;" *ngIf="this.produto.off && this.produto.preco">
+                        <p class="precoComDesconto">
+                            {{ produto.preco | currency: 'BRL'}}
+                        </p>
+                        <p class="off">{{ produto.off }}% OFF</p>
+                    </div>
+
+                    <p class="titleDescricao">Descrição do produto: </p>
+                    <p class="descricao"> {{ produto.descricao }} </p>
+
+                    <div class="freteContainer" >
+                        <mat-form-field appearance="outline" class="freteInput">
+                            <mat-label>Calcular frete</mat-label>
+                            <input matInput type="text" maxlength="8" name="cep" [(ngModel)]="cep">
+                            <mat-hint align="end">Ex: 12345678</mat-hint>
+                        </mat-form-field>
+
+                        <button mat-stroked-button color="primary" class="buttonFrete" (click)="consultarFrete()">Consultar</button>
+                    </div>
+                   
+                    <button class="btnAdd" mat-raised-button color="primary" (click)="adicionarCarrinho()">Adicionar no carrinho</button>
+                </div>
+            </mat-grid-tile>
+
+            <!-- Grid de imagens para selecionar -->
+            <mat-grid-tile colspan="2" rowspan="1">
+                <div class="gridImagens" *ngIf="imagens.length > 0">
+                    <div class="grid" *ngFor="let i of imagens" (click)="changeImage(i)" [ngClass]="i.active">
+                        <img [src]="i.url" alt="imagem ilustrativa" class="imgIcon">
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </mat-card>
+</div>

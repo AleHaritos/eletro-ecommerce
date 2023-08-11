@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #ebebeb; }
+
+:root {
+    --success-color: rgb(30, 161, 30);
+    --warn-color: rgb(189, 189, 8);
+    --red-color: rgb(209, 21, 21);
+    --info-color: rgb(9, 184, 228);
+
+    --label-color: #000;
+    --white-color: #FFF;
+}
+
+.green-msg {
+    --mdc-snackbar-container-color: var(--success-color);
+    --mat-snack-bar-button-color: var(--white-color);
+    --mdc-snackbar-supporting-text-weight: 500;
+}
+
+.warn-msg {
+    --mdc-snackbar-container-color: var(--warn-color);
+    --mdc-snackbar-supporting-text-color: var(--label-color);
+    --mat-snack-bar-button-color: var(--label-color);
+    --mdc-snackbar-supporting-text-weight: 500;
+}
+
+.red-msg {
+    --mdc-snackbar-container-color: var(--red-color);
+    --mat-snack-bar-button-color: var(--white-color);
+    --mdc-snackbar-supporting-text-weight: 500;
+}
+
+.info-msg {
+    --mdc-snackbar-container-color: var(--info-color);
+    --mdc-snackbar-supporting-text-color: var(--label-color);
+    --mdc-snackbar-supporting-text-weight: 500;
+}
