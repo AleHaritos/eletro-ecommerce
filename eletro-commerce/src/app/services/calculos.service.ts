@@ -116,5 +116,30 @@ export class CalculosService {
     localStorage.setItem('cart', jsonCart)
   }
 
+  finalizarPedido(): Observable<any> {
+    return this.http.get<any>(`${this.util.backUrl()}/pedido`)
+      .pipe(
+        map((res: any) => res),
+        catchError(e => this.util.errorHandler(e.error))
+      );
+  }
+
+  realizarPagamento(): Observable<any> {
+    return this.http.post(`${this.util.backUrl()}/pedido/pagamento`, {
+      moeda: "brl",
+      intent: "sale",
+      preco: 3.99,
+      descricao: "Eletro E-commerce",
+      metodo: "paypal"
+    }).pipe(
+      map(res => res),
+      catchError(e => this.util.errorHandler(e.error))
+    )
+  }
+
+  executarPagamento(paymentId: string, payerId: string): Observable<any> {
+    return this.http.get(`${this.util.backUrl()}/pedido/execute`, { params: { payerId, paymentId}})
+  }
+
 
 }

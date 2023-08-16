@@ -11,6 +11,8 @@ import { CompraComponent } from './pages/compra/compra.component';
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
+import { CancelComponent } from './pages/cancel/cancel.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'categoria/:link', component: CategoriaComponent },
   { path: 'pedido', component: PedidoComponent },
+  { path: 'cancel', component: CancelComponent },
+  { path: 'success', component: SuccessComponent },
 
 ];
 

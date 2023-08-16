@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { Carrinho } from 'src/app/interfaces/interface';
 import { CalculosService } from 'src/app/services/calculos.service';
@@ -13,6 +14,7 @@ export class PedidoComponent implements OnInit, OnDestroy {
 
   constructor(
     public calcService: CalculosService,
+    public route: ActivatedRoute
   ) { }
 
   carrinho!: Carrinho[]
@@ -56,8 +58,15 @@ export class PedidoComponent implements OnInit, OnDestroy {
     }
   }
 
-  confirmar(): void {
+  finalizar(): void {
+    // this.calcService.finalizarPedido().subscribe(res => {
+    //   console.log(res)
+    // })
 
+    this.calcService.realizarPagamento().subscribe(res => {
+      window.location = res.url
+
+    })
   }
 
   ngOnDestroy(): void {

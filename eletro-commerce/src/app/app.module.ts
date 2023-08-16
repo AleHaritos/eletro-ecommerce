@@ -51,6 +51,8 @@ import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { LancamentosComponent } from './home/lancamentos/lancamentos.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
+import { CancelComponent } from './pages/cancel/cancel.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 
 // Fazer com que o site seja pt-BR
@@ -75,7 +77,9 @@ registerLocaleData(localePT, 'pt-BR')
     CarrinhoComponent,
     CategoriaComponent,
     LancamentosComponent,
-    PedidoComponent
+    PedidoComponent,
+    CancelComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
