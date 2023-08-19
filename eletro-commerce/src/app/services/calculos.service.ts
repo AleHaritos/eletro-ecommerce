@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, catchError, EMPTY } from 'rxjs';
+import { Observable, map, catchError, EMPTY, retry } from 'rxjs';
 import { Util } from '../util';
-import { Carrinho, Cep, DadosFrete, Produto } from '../interfaces/interface';
+import { Carrinho, Cep, DadosFrete, Pedido, Produto } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,29 @@ import { Carrinho, Cep, DadosFrete, Produto } from '../interfaces/interface';
 export class CalculosService {
 
   carrinho: Carrinho[] = []
+  pedido!: Pedido
 
   constructor(
     private http: HttpClient,
     private util: Util
   ) {
+    //Resgatar dados em localStorage
     let cart = localStorage.getItem('cart')
+    let pedido = localStorage.getItem('pedido')
 
     if (cart) {
       this.carrinho = JSON.parse(cart)
+    }
+
+    if (pedido) {
+      this.pedido = JSON.parse(pedido)
     }
   }
 
   calcularFrete(cep: string): Observable<DadosFrete> {
     return this.http.get<DadosFrete>(`${this.util.backUrl()}/calculo/frete`, { params: { cep } })
       .pipe(
+        retry(3),
         map(res => res),
         catchError(e => {
           if (e.status) {
@@ -55,6 +63,11 @@ export class CalculosService {
   limparCarrinho(): void {
     this.carrinho = []
     localStorage.removeItem('cart')
+  }
+
+  limparPedido(): void {
+    this.pedido = null as any
+    localStorage.removeItem('pedido')
   }
 
   adicionarCarrinho(produto: Carrinho): void {
@@ -124,13 +137,10 @@ export class CalculosService {
       );
   }
 
-  realizarPagamento(): Observable<any> {
+  realizarPagamento(valorTotal: number): Observable<any> {
     return this.http.post(`${this.util.backUrl()}/pedido/pagamento`, {
-      moeda: "brl",
-      intent: "sale",
-      preco: 3.99,
+      preco: valorTotal,
       descricao: "Eletro E-commerce",
-      metodo: "paypal"
     }).pipe(
       map(res => res),
       catchError(e => this.util.errorHandler(e.error))
@@ -141,5 +151,11 @@ export class CalculosService {
     return this.http.get(`${this.util.backUrl()}/pedido/execute`, { params: { payerId, paymentId}})
   }
 
-
+  salvarPedido(): Observable<any> {
+    return this.http.post(`${this.util.backUrl()}/pedido/salvar`, this.pedido )
+      .pipe(
+        map(res => res),
+        catchError(e => this.util.errorHandler(e.error))
+      )
+  }
 }

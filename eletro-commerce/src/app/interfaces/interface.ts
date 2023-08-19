@@ -44,3 +44,14 @@ export interface Cep {
     cep?: string,
     erro?: boolean,
 }
+
+
+export interface Pedido {
+    emailUsuario?: string,
+    produtos?: string,
+    cep: string,
+    logradouro: string,
+    valorTotal: number,
+    data?: Date
+    numero: number
+}

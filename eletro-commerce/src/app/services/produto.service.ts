@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, retry } from 'rxjs';
-import { Produto } from '../interfaces/interface';
+import { Carrinho, Produto } from '../interfaces/interface';
 import { Util } from '../util';
 import * as firebaseStorage from 'firebase/storage'
 
@@ -95,6 +95,14 @@ export class ProdutoService {
         map((res: any) => res),
         catchError((e: any) => this.util.errorHandler(e.error))
       )
+  }
+  
+  ajustesEstoque(produtos: Produto[]): Observable<any> {
+    return this.http.post(`${this.util.backUrl()}/produto/ajuste-estoque`, produtos)
+    .pipe(
+      map((res: any) => res),
+      catchError((e: any) => this.util.errorHandler("Erro, estoque indisponivel, cheque seus itens do carrinho!"))
+    )
   }
 
   // Imagens

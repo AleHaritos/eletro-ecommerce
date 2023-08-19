@@ -1,1 +1,20 @@
-<p>success works!</p>
+<div [ngSwitch]="status">
+    <div class="loading" *ngSwitchCase="enumStatus.CARREGANDO">
+        <mat-spinner class="spinner" diameter="200"></mat-spinner>
+        <h3 class="subtitle">Processando...</h3>
+    </div>
+
+    <div class="loading" *ngSwitchCase="enumStatus.SUCESSO">
+        <mat-card class="card">
+            <mat-card-title class="title">Pagamento Aprovado</mat-card-title>
+        </mat-card>
+    </div>
+
+    <div class="loading" *ngSwitchCase="enumStatus.ERRO">
+        <mat-card class="card">
+            <mat-card-title class="title">Pagamento Reprovado</mat-card-title>
+        </mat-card>
+    </div>
+
+
+</div>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import localePT from '@angular/common/locales/pt';
+import { getBrPaginatorIntl } from './br-paginator-intl';
 import { LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -19,12 +20,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatPaginatorIntl } from '@angular/material/paginator';
-import { getBrPaginatorIntl } from './br-paginator-intl';
+
 
 import { Util } from './util';
 import { ProdutoService } from './services/produto.service';
