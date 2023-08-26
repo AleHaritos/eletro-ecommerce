@@ -50,17 +50,17 @@ export class PedidoComponent implements OnInit, OnDestroy {
   onChangeCep(): void {
     if (this.forms.get('cep')?.valid) {
       this.subs.push(this.calcService.consultarCep(this.forms.get('cep')?.value).subscribe(res => {
-        if (res) {
+        if (res && !res.erro) {
           this.forms.get('logradouro')?.setValue(res.logradouro)
           this.forms.get('localidade')?.setValue(res.localidade)
-        }
-
+        
         this.subs.push(this.calcService.calcularFrete(this.forms.get('cep')?.value).subscribe(frete => {
           this.valorFrete = parseFloat(frete.valor.replace(",", "."))
           this.forms.get('frete')?.setValue("R$" + frete.valor)
           this.forms.get('prazo')?.setValue(frete.prazo + " dia(s)")
           this.forms.get('valorTotal')?.setValue("R$" + (this.valorTotal + parseFloat(frete.valor.replace(",", "."))).toFixed(2))
         }))
+      }
       }))
     }
   }

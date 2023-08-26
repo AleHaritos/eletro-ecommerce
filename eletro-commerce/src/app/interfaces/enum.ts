@@ -1,5 +1,6 @@
 export enum StatusEnum {
     CARREGANDO,
     SUCESSO,
-    ERRO
+    ERRO,
+    EMPTY
 }

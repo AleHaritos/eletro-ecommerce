@@ -13,6 +13,7 @@ import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { CancelComponent } from './pages/cancel/cancel.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { ControlePedidosComponent } from './pages/controle-pedidos/controle-pedidos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'imagens/:id', component: ImagensComponent, canActivate: [AuthService] },
   { path: 'controle', component: ControleComponent, canActivate: [AuthService] },
   { path: 'detalhes/:id', component: DetalhesComponent, canActivate: [AuthService] },
+  { path: 'gerenciar-pedidos', component: ControlePedidosComponent, canActivate: [AuthService] },
   { path: 'item/:id', component: CompraComponent },
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'categoria/:link', component: CategoriaComponent },

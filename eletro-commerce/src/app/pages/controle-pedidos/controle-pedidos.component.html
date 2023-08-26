@@ -1,0 +1,71 @@
+<h2 class="title">Controle de Pedidos</h2>
+<mat-divider></mat-divider>
+
+<form [formGroup]="formGroup" class="forms">
+
+<mat-form-field appearance="outline" class="field">
+    <mat-label>Insira a data dos pedidos</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Início" formControlName="dataInicio">
+      <input matEndDate placeholder="Fim" formControlName="dataFim">
+    </mat-date-range-input>
+    <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-stroked-button class="btnPesquisar" (click)="search()">Pesquisar</button>
+</form>
+
+<div class="container" *ngIf="status == enum.SUCESSO">
+<div class="mat-elevation-z8" style="width: 80%; left: 50%;" >
+    <table mat-table [dataSource]="dataSource" matSort class="table">
+  
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.id}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="cep">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CEP </th>
+        <td mat-cell *matCellDef="let row" style="width: 20%;"> {{row.cep}} </td>
+      </ng-container>
+  
+   
+      <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Número </th>
+        <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.numero}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
+        <td mat-cell *matCellDef="let row"> {{row.data}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="detalhe">
+        <th mat-header-cell *matHeaderCellDef> Detalhe </th>
+        <td mat-cell *matCellDef="let row" align="center"> <mat-icon class="info">info</mat-icon></td>
+      </ng-container>
+
+      <ng-container matColumnDef="checked">
+        <th mat-header-cell *matHeaderCellDef> Entregue </th>
+        <td mat-cell *matCellDef="let row" align="end"> 
+            <mat-icon [ngClass]="row.checked ? 'done' : 'close'">{{ row.checked ? 'done' : 'close' }}</mat-icon>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
+
+<!-- <div class="loading" *ngIf="status == enum.CARREGANDO">
+    <mat-spinner class="spinner" diameter="200"></mat-spinner>
+    <h3 class="subtitle">Processando...</h3>
+</div> -->

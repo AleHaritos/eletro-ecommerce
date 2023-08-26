@@ -32,16 +32,8 @@ export class CalculosService {
   calcularFrete(cep: string): Observable<DadosFrete> {
     return this.http.get<DadosFrete>(`${this.util.backUrl()}/calculo/frete`, { params: { cep } })
       .pipe(
-        retry(3),
-        map(res => res),
-        catchError(e => {
-          if (e.status) {
-            this.util.snackBar("CEP inválido, por favor conferir", 3)
-            return EMPTY
-          } else {
-            return this.util.errorHandler(e);
-          }
-        })
+        retry({ count: 10, delay: 1000}),
+        map(res => res)
       )
   }
 
@@ -151,11 +143,7 @@ export class CalculosService {
     return this.http.get(`${this.util.backUrl()}/pedido/execute`, { params: { payerId, paymentId}})
   }
 
-  salvarPedido(): Observable<any> {
-    return this.http.post(`${this.util.backUrl()}/pedido/salvar`, this.pedido )
-      .pipe(
-        map(res => res),
-        catchError(e => this.util.errorHandler(e.error))
-      )
+  public getPedido(): any {
+    return this.pedido;
   }
 }

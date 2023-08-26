@@ -52,6 +52,7 @@ export interface Pedido {
     cep: string,
     logradouro: string,
     valorTotal: number,
-    data?: Date
-    numero: number
+    data?: any
+    numero: number,
+    checked?: boolean
 }

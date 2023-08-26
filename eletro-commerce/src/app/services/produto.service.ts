@@ -105,6 +105,14 @@ export class ProdutoService {
     )
   }
 
+  rollbackEstoque(produtos: Produto[]): Observable<any> {
+    return this.http.post(`${this.util.backUrl()}/produto/rollback-estoque`, produtos)
+    .pipe(
+      map((res: any) => res),
+      catchError((e: any) => e)
+    )
+  }
+
   // Imagens
 
   uploadImagem(id: number, file: any): any {

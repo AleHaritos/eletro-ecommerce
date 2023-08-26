@@ -7,12 +7,25 @@
     <div class="loading" *ngSwitchCase="enumStatus.SUCESSO">
         <mat-card class="card">
             <mat-card-title class="title">Pagamento Aprovado</mat-card-title>
+            <mat-divider style="margin-top: 10px;"></mat-divider>
+            <mat-card-content class="content">
+                <h2 class="title">Muito Obrigado pela sua preferência <strong>{{ pagamento.payer.payer_info.first_name }}</strong></h2>
+                <h2 class="title">Seu pedido está sendo preparado e logo será enviado!</h2>
+
+                <button mat-stroked-button routerLink="/" class="btn">Voltar às compras</button>
+            </mat-card-content>
         </mat-card>
     </div>
 
     <div class="loading" *ngSwitchCase="enumStatus.ERRO">
         <mat-card class="card">
             <mat-card-title class="title">Pagamento Reprovado</mat-card-title>
+            <mat-divider style="margin-top: 10px;"></mat-divider>
+            <mat-card-content class="content">
+                <h2 class="title">Verifique seu saldo e limites!</h2>
+
+                <button mat-stroked-button routerLink="/" class="btn">Voltar às compras</button>
+            </mat-card-content>
         </mat-card>
     </div>
 

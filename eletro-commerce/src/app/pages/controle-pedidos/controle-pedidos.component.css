@@ -1,0 +1,52 @@
+.title {
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+.forms {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.field {
+    margin-right: 30px;
+}
+
+.btnPesquisar {
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.loading {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    margin-top: 150px;
+}
+
+.info {
+    color: rgb(10, 109, 221);
+    cursor: pointer;
+}
+
+.done {
+    color: green;
+    cursor: pointer;
+}
+
+.close {
+    color: rgb(231, 4, 4);
+    cursor: pointer;
+}

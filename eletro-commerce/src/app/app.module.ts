@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 
@@ -54,6 +55,9 @@ import { LancamentosComponent } from './home/lancamentos/lancamentos.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { CancelComponent } from './pages/cancel/cancel.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { ControlePedidosComponent } from './pages/controle-pedidos/controle-pedidos.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { PedidoDetalheComponent } from './pages/pedido-detalhe/pedido-detalhe.component';
 
 
 // Fazer com que o site seja pt-BR
@@ -80,7 +84,9 @@ registerLocaleData(localePT, 'pt-BR')
     LancamentosComponent,
     PedidoComponent,
     CancelComponent,
-    SuccessComponent
+    SuccessComponent,
+    ControlePedidosComponent,
+    PedidoDetalheComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +111,10 @@ registerLocaleData(localePT, 'pt-BR')
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule,
+    MatFormFieldModule, 
+    MatNativeDateModule
   ],
   providers: [ Util, ProdutoService, AuthService, CalculosService, 
     { provide: LOCALE_ID, useValue: 'pt-BR'},

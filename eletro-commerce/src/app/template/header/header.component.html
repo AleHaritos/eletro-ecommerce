@@ -1,6 +1,6 @@
 <mat-toolbar class="header" color="primary">
     <mat-toolbar-row class="row">
-    <span class="logo" routerLink="/">LOGO</span>
+    <span class="logo" routerLink="/">Eletro-Store</span>
      <form [formGroup]="formSearch" (ngSubmit)="onSubmitSearch()" class="formSearch">
         <mat-form-field class="searchField" appearance="fill">
             <input matInput formControlName="search" class="searchInput" placeholder="Buscar produtos..."  maxlength="120"/>
@@ -35,6 +35,7 @@
         <mat-menu #menu="matMenu">
             <a routerLink="/cadastro" class="menu-item"><button mat-menu-item>Cadastro</button></a>
             <a routerLink="/controle" class="menu-item"><button mat-menu-item>Controle</button></a>
+            <a routerLink="/gerenciar-pedidos" class="menu-item"><button mat-menu-item>Pedidos</button></a>
             <!--<a routerLink="/pedidos-historico"><button mat-menu-item>Registro de pedidos</button></a> -->
             <a (click)="signOut()"><button mat-menu-item>Sair</button></a>
           </mat-menu>
