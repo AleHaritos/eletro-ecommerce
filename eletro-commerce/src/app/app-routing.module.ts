@@ -14,6 +14,7 @@ import { PedidoComponent } from './pages/pedido/pedido.component';
 import { CancelComponent } from './pages/cancel/cancel.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { ControlePedidosComponent } from './pages/controle-pedidos/controle-pedidos.component';
+import { PedidoDetalheComponent } from './pages/pedido-detalhe/pedido-detalhe.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,10 @@ const routes: Routes = [
   { path: 'item/:id', component: CompraComponent },
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'categoria/:link', component: CategoriaComponent },
-  { path: 'pedido', component: PedidoComponent },
+  { path: 'pedido', children: [
+    { path: '', component: PedidoComponent },
+    { path: ':id', component: PedidoDetalheComponent, canActivate: [ AuthService ]}
+  ] },
   { path: 'cancel', component: CancelComponent },
   { path: 'success', component: SuccessComponent },
 

@@ -1,1 +1,87 @@
-<p>pedido-detalhe works!</p>
+<div class="container" *ngIf="pedido">
+    <mat-card class="card">
+        <mat-card-title class="title">
+            Pedido #{{ pedido.id }} - {{ pedido.data }}
+        </mat-card-title>
+
+        <form class="forms" [formGroup]="forms">
+            <div class="divisor">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>CEP</mat-label>
+                    <input type="text" readonly matInput formControlName="cep">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="field" style="width: 35%;">
+                    <mat-label>Logradouro</mat-label>
+                    <input type="text" readonly matInput formControlName="logradouro">
+                </mat-form-field>
+            </div>
+
+            <div class="divisor">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Número</mat-label>
+                    <input type="text" readonly matInput formControlName="numero">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Valor Total</mat-label>
+                    <input type="text" readonly matInput formControlName="valorTotal">
+                </mat-form-field>
+
+                <span class="enviadoContainer">
+                    <span class="enviado">Produto enviado?</span>
+                    <mat-icon class="check" [ngClass]="this.pedido.checked ? 'checked' : 'unchecked'"
+                        (click)="checkPedido(this.pedido)">
+                        {{this.pedido.checked ? 'check_box' : 'check_box_outline_blank'}}
+                    </mat-icon>
+                </span>
+            </div>
+        </form>
+
+        <div class="treeContainer">
+            <h2>Produtos Comprados</h2>
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+
+                    <mat-list>
+                        <mat-list-item>
+                            <span matListItemTitle><strong>ID:</strong>{{ node.id }}</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span matListItemTitle><strong>Nome:</strong>{{node.nome}}</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span matListItemTitle><strong>Preco:</strong>{{node.off && node.preco ? (node.preco |
+                                currency : 'BRL') :
+                                node.precoOriginal | currency : 'BRL'}}</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span matListItemTitle><strong>Categoria: </strong>{{ node.categoria }} </span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span matListItemTitle><strong>Quantidade Comprada: </strong>{{this.findQuantidade(node.id) }}</span>
+                        </mat-list-item>
+                    </mat-list>
+
+                </mat-tree-node>
+
+                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                    <div class="mat-tree-node">
+                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.nome">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </mat-icon>
+                        </button>
+                        {{node.name}}
+                    </div>
+
+                    <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </div>
+                </mat-nested-tree-node>
+            </mat-tree>
+        </div>
+
+    </mat-card>
+</div>

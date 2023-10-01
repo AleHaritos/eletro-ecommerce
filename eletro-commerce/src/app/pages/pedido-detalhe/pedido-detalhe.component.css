@@ -1,0 +1,85 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.title {
+    align-self: center;
+    margin-top: 15px;
+    font-weight: 300;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 60%;
+}
+
+.field {
+    margin-right: 30px;
+}
+
+.divisor {
+    margin-left: 100px;
+    margin-bottom: 40px;
+}
+
+.enviado {
+    font-size: 0.9rem;
+    margin-right: 10px;
+    /* font-weight: 400; */
+}
+
+.enviadoContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.check {
+    cursor: pointer;
+}
+
+.checked {
+    color: green;
+}
+
+.treeContainer {
+    width: 40%;
+    height: 40vh;
+    position: relative;
+    left: 58%;
+    bottom: 33%;
+}
+
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+  
+  .example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 40px;
+  }
+  
+  .example-tree div[role=group] > .mat-tree-node {
+    padding-left: 40px;
+  }
+
+  strong {
+    margin-right: 8px;
+  }

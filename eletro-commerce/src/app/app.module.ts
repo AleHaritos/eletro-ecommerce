@@ -26,6 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatListModule} from '@angular/material/list';
 
 
 import { Util } from './util';
@@ -114,7 +116,9 @@ registerLocaleData(localePT, 'pt-BR')
     MatDividerModule,
     MatDatepickerModule,
     MatFormFieldModule, 
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTreeModule,
+    MatListModule
   ],
   providers: [ Util, ProdutoService, AuthService, CalculosService, 
     { provide: LOCALE_ID, useValue: 'pt-BR'},

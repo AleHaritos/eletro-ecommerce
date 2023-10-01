@@ -55,4 +55,5 @@ export interface Pedido {
     data?: any
     numero: number,
     checked?: boolean
+    id?: number
 }

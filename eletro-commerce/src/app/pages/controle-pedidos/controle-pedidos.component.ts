@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { StatusEnum } from 'src/app/interfaces/enum';
 import { Pedido } from 'src/app/interfaces/interface';
 import { PedidoService } from 'src/app/services/pedido.service';
+import { Util } from 'src/app/util';
 
 @Component({
   selector: 'app-controle-pedidos',
@@ -19,7 +20,8 @@ import { PedidoService } from 'src/app/services/pedido.service';
 export class ControlePedidosComponent implements OnInit, OnDestroy {
 
   constructor(
-    private pedidoService: PedidoService
+    private pedidoService: PedidoService,
+    private util: Util
   ) { }
 
   formGroup = new FormGroup({
@@ -70,6 +72,17 @@ export class ControlePedidosComponent implements OnInit, OnDestroy {
           this.status = StatusEnum.SUCESSO
         }))
     }
+  }
+
+  checkPedido(pedido: Pedido): void {
+      this.subs.push(this.pedidoService.checkPedido(pedido.id as number, !pedido.checked).subscribe(res => {
+        this.dataSource.data.forEach((y: Pedido) => y.id == pedido.id ? y.checked = res.checked : null)
+        if (res.checked) {
+          this.util.snackBar("Item Checado com sucesso!", 1)
+        } else {
+          this.util.snackBar("Item Desmarcado com sucesso!")
+        }
+      }))
   }
 
   ngOnDestroy(): void {

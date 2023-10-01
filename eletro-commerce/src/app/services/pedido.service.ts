@@ -29,4 +29,20 @@ export class PedidoService {
         catchError(e => this.util.errorHandler(e.error))
       )
   }
+
+  getPedidoById(id: number): Observable<Pedido> {
+    return this.http.get<Pedido>(`${this.util.backUrl()}/pedido/${id}`)
+      .pipe(
+        map(res => res), 
+        catchError(e => this.util.errorHandler(e))
+      )
+  }
+
+  checkPedido(id: number, check: boolean): Observable<Pedido> {
+    return this.http.put<Pedido>(`${this.util.backUrl()}/pedido/${id}`, {}, { params: { check } })
+      .pipe(
+        map(res => res), 
+        catchError(e => this.util.errorHandler(e))
+      )
+  }
 }
